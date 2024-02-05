@@ -1,5 +1,7 @@
 import time
+import sys
 from termcolor import colored
+import msvcrt
 
 def display_text_with_highlight(input_text, current_index, user_input):
     display_text = ""
@@ -14,12 +16,23 @@ def display_text_with_highlight(input_text, current_index, user_input):
         else:
             display_text += ' '
 
-    print(display_text)
+    sys.stdout.write("\r" + display_text)
+    sys.stdout.flush()
+
+def countdown():
+    for i in range(3, 0, -1):
+        sys.stdout.write(f"\r{i}")
+        sys.stdout.flush()
+        time.sleep(1)
+    sys.stdout.write("\r   \r")
+    sys.stdout.flush()
 
 def test_speed():
-    input_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    print(input_text)
-    print()
+    input_text = "Lorem i"
+    print("Preparar-se para o teste:")
+    countdown()
+
+    print("\n" + input_text + "\n")
 
     user_input = ""
     current_index = 0
@@ -28,17 +41,28 @@ def test_speed():
 
     while current_index < len(input_text):
         display_text_with_highlight(input_text, current_index, user_input)
-        key = input("Pressione a tecla correta: ")
+
+        # Captura o próximo caractere sem precisar pressionar Enter usando a biblioteca msvcrt
+        key = msvcrt.getch().decode("utf-8")
+        key = key if len(key) == 1 else key.lower()
 
         if key == input_text[current_index]:
             user_input += key
             current_index += 1
         else:
             user_input += colored(key, 'white', 'on_red')  # Background color red for incorrect input
+            display_text_with_highlight(input_text, current_index, user_input)
+            time.sleep(0.5)  # Aguarda 0.5 segundos para destacar o caractere incorreto antes de reescrever
+
+            # Limpa a linha e redefine o texto corretamente digitado
+            sys.stdout.write("\r" + ' ' * len(input_text))
+            sys.stdout.flush()
+            user_input = ""
+            current_index = 0
 
     end_time = time.time()
 
-    print("\nVocê digitou corretamente!")
+    print("\n\nVocê digitou corretamente!")
     time_taken = end_time - start_time
     print(f"Tempo levado: {time_taken:.2f} segundos")
     print("\nTexto correto:")
