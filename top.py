@@ -11,9 +11,10 @@ def display_text_with_highlight(input_text, current_index, user_input):
             display_text += colored(char, 'grey')  # Original text color in light grey
         elif i == current_index:
             if user_input and user_input[-1] == char:
-                display_text += colored(char, 'green')
+                # display_text += colored(char, 'green')
+                display_text += colored(char, 'white', 'on_red')  # Background color red
             else:
-                display_text += colored(char, 'white', 'on_red')  # Background color red for incorrect input
+                display_text += colored(char, 'white', 'on_blue')  # Background color blue
         else:
             display_text += colored(char, 'grey')  # Original text color in light grey
 
