@@ -30,7 +30,10 @@ def countdown():
     sys.stdout.flush()
 
 def test_speed():
-    input_texts = ["Lorem 1", "Lorem 2", "Lorem 3", "Lorem 4"]
+    input_texts = [ "O céu estava estrelado e a lua brilhava intensamente, iluminando a noite com sua luz prateada.",
+                    "O pássaro voou velozmente entre as árvores, exibindo suas asas coloridas em um espetáculo de liberdade.",
+                    "O rio fluía calmamente, refletindo as montanhas e criando uma paisagem serena e encantadora.",
+                    "As flores desabrochavam em um canteiro repleto de cores vibrantes, enchendo o ar com um perfume doce e envolvente."]
     input_text = random.choice(input_texts)
 
     print("Preparar-se para o teste:")
@@ -53,9 +56,7 @@ def test_speed():
         if key == input_text[current_index]:
             user_input += key
             current_index += 1
-        else:
-            user_input += colored(key, 'white', 'on_red')  # Background color red for incorrect input
-            display_text_with_highlight(input_text, current_index, user_input)
+
 
     end_time = time.time()
 
