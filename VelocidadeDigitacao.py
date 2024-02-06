@@ -31,8 +31,8 @@ def contagem_regressiva():
 def avaliar_desempenho(tempo_decorrido):
     if tempo_decorrido < 30:
         return "\033[0;32;40mÓtimo\033[0m"
-    elif 40 <= tempo_decorrido <= 45:
-        return "\033[0;34;40mBom\033[0m"
+    elif 30 <= tempo_decorrido <= 45:
+        return "\033[0;34;40mBom\033[0m"  # bom de 30 a 45
     else:
         return "\033[0;31;40mRuim\033[0m"
 
