@@ -8,7 +8,7 @@ def exibir_texto_com_destaque(texto_entrada, indice_atual, entrada_usuario):
     texto_exibicao = ""
     for i, caractere in enumerate(texto_entrada):
         if i < indice_atual:
-            texto_exibicao += colored(caractere, 'grey')  # Cor original do texto em cinza claro
+            texto_exibicao += colored(caractere, 'white')  # Cor original do texto em cinza claro
         elif i == indice_atual:
             if entrada_usuario and entrada_usuario[-1] == caractere:
                 texto_exibicao += colored(caractere, 'white', 'on_red')  # Fundo vermelho
@@ -81,3 +81,5 @@ def teste_velocidade():
 
 # Inicia o teste
 teste_velocidade()
+
+
