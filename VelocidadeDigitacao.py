@@ -13,7 +13,7 @@ def exibir_texto_com_destaque(texto_entrada, indice_atual, entrada_usuario):
             if entrada_usuario and entrada_usuario[-1] == caractere:
                 texto_exibicao += colored(caractere, 'white', 'on_red')  # Fundo vermelho
             else:
-                texto_exibicao += colored(caractere, 'white', 'on_blue')  # Fundo azul
+                texto_exibicao += colored(caractere, 'white', 'on_blue', attrs=['underline'])  # Fundo azul e underline
         else:
             texto_exibicao += colored(caractere, 'grey')  # Cor original do texto em cinza claro
 
